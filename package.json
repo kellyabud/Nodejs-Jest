@@ -1,0 +1,14 @@
+{
+  "name": "projeto-node-jest",
+  "version": "1.0.0",
+  
+  "description": "Testes unitários com jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  
+  "keywords": [],
+  "author": "Kelly Abud",
+  "license": "ISC"
+}
