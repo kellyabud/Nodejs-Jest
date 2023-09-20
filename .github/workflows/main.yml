@@ -1,31 +1,37 @@
-name: Node.js CI
+name:  CI com trigger por update
 
-on: [push]
+on:
+
+ # schedule:
+ # - cron: '0 */6 * * 5'  # https://crontab.guru/ #
+  
+  push:                   # EXECUÇÃO A CADA PUSH NA BRANCH MAIN
+    branches:
+     - 'master'
+      
+  workflow_dispatch:      # EXECUÇÃO MANUAL
+  
 
 jobs:
-  build:
-
+        
+      
+  deploy-dev:
+    name: Teste em DEV    
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          node-version: '18.x'
-      - run: npm install
-      - run: npm run build --if-present      
+          node-version: "16"
 
-  unit_test:
-    runs-on: ubuntu-latest
+      # Install required deps for action - jest, jest-html-report
+      - name: Install Dependencies
+        run: npm install --save-dev jest 
 
-    needs: [ build ]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'    
-      - run: npm install
-      - run: npm test
+      # Finally, run our tests
+      - name: Run the tests
+        run: npm test
+        
+      -
+           
