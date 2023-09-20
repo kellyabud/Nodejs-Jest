@@ -29,3 +29,13 @@ jobs:
           node-version: '18.x'    
       - run: npm install
       - run: npm test
+       
+      - name: Generate report
+        run:  npm test
+      - name: Upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jest-report
+          path: './test-report.html'
+      - run: echo REALIZANDO TESTES UNITARIOS e SALVANDO O REPORT
+      
