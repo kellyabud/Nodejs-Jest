@@ -10,4 +10,5 @@ Testes de unidade para o aplicativo NodeJs usando Jest:
 - npm install --save-dev jest
 - "scripts": {
   "test": "jest"
+  }
 - npm test
